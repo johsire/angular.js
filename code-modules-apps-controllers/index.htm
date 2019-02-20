@@ -1,32 +1,70 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        <title>Introduction to AngularJS</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta charset="UTF-8">
+<!-- This is where Module & View are connected by Angular; using angular custom attribute- ng-app -->
+<!-- Angular knows to look for this custom attribute (link or connection) in the View/ HTML file-->
 
-        <!-- Load/ Link JavaScript File to our HTML -->
-        <script src="app.js"></script>
-    </head>
-    <body>
+<!-- This in turn gives Angular access to the DOM tree- everything inside the DOM area! -->
+<!-- Everything inside the DOM tree is now connected to our Variable in the Global Namespace- myApp in our case -->
 
-        <header>
-			<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">AngularJS</a>
-				</div>
+<!-- AngularJs looks for this Custom Attribute 'ng-app' & checks its Value to the right (in our case it is)- 'angularApp' and Matches the value to our Module(it checks what app name is passed in our module function back in app.js & matches the two)  -->
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-				</ul>
-			</div>
-			</nav>
-		</header>
+<!-- NOW THE ENTIRE DOM TREE IS OUR APP -->
+<html lang="en-us" ng-app="angularApp">
 
-        <div class="container">
+<head>
+    <title>Introduction to AngularJS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
 
-		</div>
+    <!-- load bootstrap and font awesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <style>
+        html,
+        body {
+            font-size: 1.1em;
+        }
+    </style>
 
-    </body>
+    <!-- load angular via CDN -->
+    <script src="//code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
+    <!-- load/ link our JS file -->
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">AngularJS</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+            <!-- Since the whole DOM Tree is an App, we can define a VIEW, inside our HTML; It can be a SUB-PART of our HTML  -->
+
+            <!-- Angular again sees our Custom Attribute- (ng-controller) in the DOM/ HTML & checks its name/Value to its right("mainController") then goes back to our App("angularApp") defined in our app.js file & looks for a CONTROLLER with the same matching name/Value "mainController"  -->
+
+            <!-- After the link is established, any code written in the Controller Function block/container(back in our app.js file) will be associated with controlling the HTML/code inside our HTML controller Custom Attribute block/container(found in our index.html file) -->
+
+            <!-- The code block in the controller- "mainController"(defined in our app.js) is the MODEL and the code block in the HTML custom attribute (ng-controller="mainController") (defined below) is the VIEW -->
+
+            <!-- AngularJs will keep our MODEL & VIEW BOUND/Linked to each-other for us; When we make changes in one side, we don't need to manually update the other side; Angular does it automatically for us -->
+            <div ng-controller="mainController">
+
+                <h1>Hello world!</h1>
+
+            </div>
+
+    </div>
+
+</body>
+
 </html>
