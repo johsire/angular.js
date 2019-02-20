@@ -3,7 +3,7 @@
 // Inside the AngularJs Source code, there's a Global Angular Object which contains useful code, e.g - module, controller, e.t.c (which are functions)
 
 // Module takes a Name(your app name) & An Array of Dependencies;
-var myApp = angular.module('angularApp', []);
+// var myApp = angular.module('angularApp', []);
 
 // Now we have ONLY ONE Object in the Global Namespace - named 'myApp' and its an Angular module(a.k.a an App);
 
@@ -25,9 +25,34 @@ var myApp = angular.module('angularApp', []);
 // The code block in the controller- "mainController"(defined below) is the MODEL and the code block in the HTML custom attribute (ng-controller="mainController") (defined in our index.js file) is the VIEW
 
 // AngularJs will keep our MODEL & VIEW BOUND/Linked to each-other for us; When we make changes in one side, we don't need to manually update the other side; Angular does it automatically for us
-myApp.controller('mainController', function () {});
+// myApp.controller('mainController', function () {});
 
 
 // We now have the bare bones of an Angular Js Application
 // 1) A Module with just ONE Variable sitting in the Global Namespace- var = myApp
 // 2) Controller with the same app ("angularApp") defined in the HTML using the Custom Attributes(ng-app="angularApp" & ng-controller="mainController")
+
+// MODULE
+var myApp = angular.module('angularApp', []);
+
+// CONTROLLER
+myApp.controller('mainController', function () {});
+
+
+// JavaScript Aside: Dependency Injection
+      // Giving a Function an Object
+      // Instead of creating an Object inside a Function, you pass it to the Function
+var Person = function(firstname, lastname) {
+
+  this.firstname = firstname;
+  this.lastname = lastname;
+};
+
+// This Function is dependent on the variable michael. If s'thing were to change about michael, then you'd have to make the same changes inside the Function- we don't want that.
+function logPerson()
+{
+    var michael = new Person('Michael', 'Scott');
+    console.log(michael);
+}
+
+logPerson();
