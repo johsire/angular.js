@@ -78,23 +78,45 @@
 // ALL Angular Js Services are proceeded by a dollar sign($);
 
 // MODULE
-var myApp = angular.module('angularApp', []);
+// var myApp = angular.module('angularApp', []);
 
 // CONTROLLER
-myApp.controller('mainController', function ($scope) {
+// myApp.controller('mainController', function ($scope) {
 
-  $scope.name = 'John Snow';
-  $scope.age = '25';
-  $scope.occupation = 'Night Watch';
+//   $scope.name = 'John Snow';
+//   $scope.age = '25';
+//   $scope.occupation = 'Night Watch';
 
-  $scope.getname = function() {
-    return 'John Snow';
-  };
+//   $scope.getname = function() {
+//     return 'John Snow';
+//   };
 
-  console.log($scope);
-});
+//   console.log($scope);
+// });
 
 // The idea is we can add variables & functions to the scope object.
 // Hence the scope become the middle piece/ bridge between the View & the Controller;
 // The Controller ties the data in its function block, contained in the app.js to the matching Controller Custom Attribute found in the index.html file/ the DOM;
 // The Scope gets to define the data that goes back & forth between what is defined in the Controller Function code block & what appears in our html file, in the matching/linked Controller Custom Attribute block/node.
+
+// _________________________________________________________________
+
+
+// JAVASCRIPT ASIDE: FUNCTIONS & STRINGS
+
+// MODULE
+var myApp = angular.module('angularApp', []);
+
+// CONTROLLER
+myApp.controller('mainController', function ($scope) {
+
+});
+
+var searchPeople = function(firstName, lastName, height, age, occupation) {
+  return 'John Snow';
+};
+
+// The Fn logs out as a STRING
+console.log(searchPeople);
+
+// This means we can turn any Function into a String;
