@@ -33,20 +33,20 @@
 // 2) Controller with the same app ("angularApp") defined in the HTML using the Custom Attributes(ng-app="angularApp" & ng-controller="mainController")
 
 // MODULE
-var myApp = angular.module('angularApp', []);
+// var myApp = angular.module('angularApp', []);
 
 // CONTROLLER
-myApp.controller('mainController', function () {});
+// myApp.controller('mainController', function () {});
 
 
 // JavaScript Aside: Dependency Injection
       // Giving a Function an Object
       // Instead of creating an Object inside a Function, you pass it to the Function
-var Person = function(firstname, lastname) {
+// var Person = function(firstname, lastname) {
 
-  this.firstname = firstname;
-  this.lastname = lastname;
-};
+//   this.firstname = firstname;
+//   this.lastname = lastname;
+// };
 
 // This Function is dependent on the variable michael. If s'thing were to change about michael, then you'd have to make the same changes inside the Function- we don't want that.
 // function logPerson()
@@ -63,10 +63,38 @@ var Person = function(firstname, lastname) {
 // Now logPerson Function is NOT dependent on how michael is created; - you can define him explicitly below, you can get him from the database, etc, the Point is logPerson doesn't care about that/ is not affected by that; all the Function cares about is that you passed the Person Object through it;
 
 // Whatever creates the Object outside the Function is going to PASS it to it - We're Injecting the Dependency(like a syringe, you stick the Object into the Function);
-function logPerson(person)
-{
-  console.log(person);
-}
+// function logPerson(person)
+// {
+//   console.log(person);
+// }
 
-var michael = new Person('Michael', 'Scott');
-logPerson(michael);
+// var michael = new Person('Michael', 'Scott');
+// logPerson(michael);
+//--------------------------------------------------------------------------------------------------
+
+
+// THE SCOPE SERVICE;
+
+// ALL Angular Js Services are proceeded by a dollar sign($);
+
+// MODULE
+var myApp = angular.module('angularApp', []);
+
+// CONTROLLER
+myApp.controller('mainController', function ($scope) {
+
+  $scope.name = 'John Snow';
+  $scope.age = '25';
+  $scope.occupation = 'Night Watch';
+
+  $scope.getname = function() {
+    return 'John Snow';
+  };
+
+  console.log($scope);
+});
+
+// The idea is we can add variables & functions to the scope object.
+// Hence the scope become the middle piece/ bridge between the View & the Controller;
+// The Controller ties the data in its function block, contained in the app.js to the matching Controller Custom Attribute found in the index.html file/ the DOM;
+// The Scope gets to define the data that goes back & forth between what is defined in the Controller Function code block & what appears in our html file, in the matching/linked Controller Custom Attribute block/node.
