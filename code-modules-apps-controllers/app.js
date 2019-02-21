@@ -49,10 +49,24 @@ var Person = function(firstname, lastname) {
 };
 
 // This Function is dependent on the variable michael. If s'thing were to change about michael, then you'd have to make the same changes inside the Function- we don't want that.
-function logPerson()
+// function logPerson()
+// {
+//     var michael = new Person('Michael', 'Scott');
+//     console.log(michael);
+// }
+// logPerson();
+
+
+// In order to fix this dependency problem; We define our function separately and define the Person object separately(below it)
+// We then pass our separately created Person Object through our function as an argument; Instead of creating the Object inside the Function;
+
+// Now logPerson Function is NOT dependent on how michael is created; - you can define him explicitly below, you can get him from the database, etc, the Point is logPerson doesn't care about that/ is not affected by that; all the Function cares about is that you passed the Person Object through it;
+
+// Whatever creates the Object outside the Function is going to PASS it to it - We're Injecting the Dependency(like a syringe, you stick the Object into the Function);
+function logPerson(person)
 {
-    var michael = new Person('Michael', 'Scott');
-    console.log(michael);
+  console.log(person);
 }
 
-logPerson();
+var michael = new Person('Michael', 'Scott');
+logPerson(michael);
